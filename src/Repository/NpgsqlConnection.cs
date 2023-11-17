@@ -4,7 +4,7 @@ using NPoco;
 
 namespace TEABackEndCodingChallenge.Repository;
 
-public class NpgsqlConnection : INpgsqlConnection, INPocoDatabase
+public class NpgsqlConnection : INpgsqlConnection
 {
     private readonly string _connectionString;
 

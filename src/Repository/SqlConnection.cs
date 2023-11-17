@@ -2,7 +2,7 @@
 using NPoco;
 namespace TEABackEndCodingChallenge.Repository;
 
-public class SqlConnection : ISqlConnection, INPocoDatabase
+public class SqlConnection : ISqlConnection
 {
     public SqlConnection()
     {
