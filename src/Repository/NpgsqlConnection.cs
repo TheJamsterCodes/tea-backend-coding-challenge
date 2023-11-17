@@ -10,7 +10,7 @@ public class NpgsqlConnection : INpgsqlConnection
 
     public NpgsqlConnection()
     {
-        _connectionString = "Host=localhost;Port=5432;Username=postgres;Password=psQl832!;Database=School";
+        _connectionString = "";
     }
 
     public string ConnectionString 
