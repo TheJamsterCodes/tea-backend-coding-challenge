@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 using NPoco;
 
 namespace TEABackEndCodingChallenge.Models;
@@ -14,7 +15,11 @@ public class Student
     [JsonPropertyName("lastName")]
     public string Lastname { get; set; }    
     
+    [JsonIgnore]
     public decimal Grade { get; set; }
+
+    [JsonIgnore]
+    public int Credits { get; set; }
 
     [Ignore]
     [JsonPropertyName("gpa")]

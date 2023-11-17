@@ -12,11 +12,12 @@ public class StudentService : IStudentService
     {
         foreach (Student student in students.Where(s => s.Grade > 0))
         {
-            decimal gradesSum = students.Where(s => s.StudentID == student.StudentID).Sum(g => g.Grade);
-            decimal gradeCount = students.Where(s => s.StudentID == student.StudentID && s.Grade > 0).Count();
-            student.GPA = gradesSum / gradeCount;
+            decimal totalCredits = students.Where(s => s.StudentID == student.StudentID).Sum(g => g.Grade * g.Credits);
+            decimal totalCreditHours = students.Where(s => s.StudentID == student.StudentID).Sum(g => g.Credits);
+
+            student.GPA = totalCredits / totalCreditHours;
         }   
-    }    
+    }
 
     public IEnumerable<Student> GetAll() => _studentRepo.ReadAll();
 }

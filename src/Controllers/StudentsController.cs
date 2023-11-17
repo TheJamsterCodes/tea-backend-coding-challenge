@@ -17,6 +17,6 @@ public class StudentsController : ControllerBase
     {
         var students = _students.GetAll();
         _students.CalculateGPA(students);
-        return students;
+        return students.GroupBy(s => s.StudentID).Select(x => x.First());
     }
 }

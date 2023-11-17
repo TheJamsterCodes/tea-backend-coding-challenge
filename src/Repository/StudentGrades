@@ -3,6 +3,8 @@ select
 	,Firstname
 	,Lastname
 	,Grade
+	,Credits
 from Person p
 	join StudentGrade g on p.PersonID = g.StudentID
+	join Course c on g.CourseID = c.CourseID
 ;
