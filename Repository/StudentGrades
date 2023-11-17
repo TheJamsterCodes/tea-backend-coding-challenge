@@ -1,0 +1,8 @@
+select
+	 StudentID
+	,Firstname
+	,Lastname
+	,Grade
+from Person p
+	join StudentGrade g on p.PersonID = g.StudentID
+;
