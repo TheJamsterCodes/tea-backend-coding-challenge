@@ -8,9 +8,9 @@ public class NpgsqlConnection : INpgsqlConnection
 {
     private readonly string _connectionString;
 
-    public NpgsqlConnection()
+    public NpgsqlConnection(IConfiguration config)
     {
-        _connectionString = "";
+        _connectionString = config["ConnectionStrings:PostgreSQL"];
     }
 
     public string ConnectionString 

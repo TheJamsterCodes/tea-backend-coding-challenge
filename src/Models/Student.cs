@@ -23,4 +23,12 @@ public class Student
     [Ignore]
     [JsonPropertyName("gpa")]
     public decimal GPA { get; set; }
+
+    [Ignore]
+    [JsonIgnore]
+    public decimal TotalCredits { get; set; }
+
+    [Ignore]
+    [JsonIgnore]
+    public decimal TotalCreditHours { get; set; }
 }
