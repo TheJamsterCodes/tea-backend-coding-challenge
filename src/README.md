@@ -1,1 +1,0 @@
-# tea-backend-coding-challenge
