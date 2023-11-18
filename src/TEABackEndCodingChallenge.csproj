@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <_EnableMacOSCodeSign>false</_EnableMacOSCodeSign>
+    <UserSecretsId>548eebcf-9785-4977-baf9-708d362699fd</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

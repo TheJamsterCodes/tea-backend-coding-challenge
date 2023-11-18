@@ -4,16 +4,24 @@ namespace TEABackEndCodingChallenge.Repository;
 
 public class SqlConnection : ISqlConnection
 {
-    public SqlConnection()
+    private readonly string _connectionString;
+    private readonly string _databaseName;
+
+    public SqlConnection(IConfiguration config)
     {
-        
+        _connectionString = config.GetConnectionString("SQLServer");
+        _databaseName = config.GetSection("DatabaseName").Value;
     }
 
-    public string ConnectionString { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public string ConnectionString
+    { 
+        get => _connectionString; 
+        set => throw new NotImplementedException(); 
+    }
 
     public int ConnectionTimeout => throw new NotImplementedException();
 
-    public string Database => "School";
+    public string Database => _databaseName;
 
     public ConnectionState State => throw new NotImplementedException();
 
