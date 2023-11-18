@@ -8,15 +8,20 @@ namespace TEABackEndCodingChallenge.Controllers;
 [Route("[controller]")]
 public class StudentsController : ControllerBase
 {
-    private readonly IStudentService _students;
+    private readonly IGPAService _gpa;
+    private readonly IStudentService _student;
 
-    public StudentsController(IStudentService students) => _students = students;
+    public StudentsController(IGPAService gpa, IStudentService student)
+    {
+        _gpa = gpa;
+        _student = student;
+    }
 
     [HttpGet(Name = "GetStudents")]
     public IEnumerable<Student> Get()
     {
-        var students = _students.GetAll();
-        _students.CalculateGPA(students);
-        return students.GroupBy(s => s.StudentID).Select(x => x.First());
+        var students = _student.GetAllStudentGrades();
+        _gpa.CalculateStudentGPAs(students);        
+        return students.GroupBy(s => s.StudentID).Select(s => s.First());
     }
 }
