@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.Common;
-using TEABackEndCodingChallenge.Repository;
+﻿using TEABackEndCodingChallenge.Repository;
 using TEABackEndCodingChallenge.Services;
 
 namespace TEABackEndCodingChallenge;
@@ -14,8 +12,9 @@ public static class BuilderServicesHelper
         builder.Services.AddSwaggerGen();
         builder.Services.AddMemoryCache();
         
+        builder.Services.AddTransient<IGPAService, GPAService>();
         builder.Services.AddSingleton<INpgsqlConnection, NpgsqlConnection>();
-        //builder.Services.AddSingleton<ISqlConnection, SqlConnection>();
+        builder.Services.AddSingleton<ISqlConnection, SqlConnection>();
         builder.Services.AddScoped<IStudentRepository, StudentRepository>();
         builder.Services.AddScoped<IStudentService, StudentService>();
     }
