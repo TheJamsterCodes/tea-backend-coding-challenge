@@ -10,18 +10,12 @@ public class DatabaseConnection : IDatabaseConnection
     private readonly string _connectionString;
     private readonly IDatabase _nPocoDatabase;
 
-    public DatabaseConnection(bool isUsingSQLServer)
+    public DatabaseConnection(IConfiguration config, bool isUsingSQLServer)
     {
-        var config = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.Development.json")
-            .AddUserSecrets(Assembly.GetExecutingAssembly(), optional: true)
-            .AddEnvironmentVariables()
-            .Build();
-
         if (isUsingSQLServer)
         {
             _connectionString = config.GetConnectionString("SQLServer");
-            _nPocoDatabase = new Database(_connectionString, DatabaseType.SqlServer2012, SqlClientFactory.Instance);
+            _nPocoDatabase = new Database(new SqlConnection(_connectionString));
         }
         else
         {
