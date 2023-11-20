@@ -1,5 +1,4 @@
 ﻿using System.Data.SqlClient;
-using System.Reflection;
 using Npgsql;
 using NPoco;
 
@@ -18,10 +17,9 @@ public class DatabaseConnection : IDatabaseConnection
             _nPocoDatabase = new Database(new SqlConnection(_connectionString));
         }
         else
-        {
-            // From secrets.json file
+        {            
             _connectionString = config["ConnectionStrings:PostgreSQL"];
-            _nPocoDatabase = new Database(_connectionString, DatabaseType.PostgreSQL, NpgsqlFactory.Instance);
+            _nPocoDatabase = new Database(new NpgsqlConnection(_connectionString), DatabaseType.PostgreSQL);
         }
     }
 

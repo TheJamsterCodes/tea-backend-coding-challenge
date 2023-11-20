@@ -28,6 +28,7 @@ public class StudentRepository : IStudentRepository
 
                 using (IDatabase db = _dbConnection.NPocoDatabase)
                 {
+                    db.Connection.Open();
                     students = db.Fetch<Student>(sql);
                 }
 
