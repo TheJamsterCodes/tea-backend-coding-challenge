@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.Common;
-using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Memory;
 using NPoco;
 using TEABackEndCodingChallenge.Models;
 
@@ -10,14 +8,9 @@ public class StudentRepository : IStudentRepository
 {
     private readonly IMemoryCache _cache;
     private static readonly string _cacheName = "students";
-    private readonly INpgsqlConnection _dbConnection;
-    //private readonly ISqlConnection _dbConnection;
+    private readonly IDatabaseConnection _dbConnection;
 
-    public StudentRepository(
-        IMemoryCache cache
-        ,INpgsqlConnection dbConnection
-        // ,ISqlConnection dbConnection
-    )
+    public StudentRepository(IMemoryCache cache, IDatabaseConnection dbConnection)
     {
         _cache = cache;
         _dbConnection = dbConnection;        

@@ -13,8 +13,7 @@ public static class BuilderServicesHelper
         builder.Services.AddMemoryCache();
         
         builder.Services.AddTransient<IGPAService, GPAService>();
-        builder.Services.AddSingleton<INpgsqlConnection, NpgsqlConnection>();
-        builder.Services.AddSingleton<ISqlConnection, SqlConnection>();
+        builder.Services.AddSingleton<IDatabaseConnection>(db => new DatabaseConnection(isUsingSQLServer: true));
         builder.Services.AddScoped<IStudentRepository, StudentRepository>();
         builder.Services.AddScoped<IStudentService, StudentService>();
     }
